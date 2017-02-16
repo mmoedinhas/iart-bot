@@ -1,6 +1,6 @@
 {
-    "appSecret": "",
-    "pageAccessToken": "",
-    "validationToken": "",
-    "serverURL": ""
+    "appSecret": "cd91f7e8a77c2d858e0eea27e945e2ec",
+    "pageAccessToken": "EAAaXfeEsCmkBANhNsMqpH08f373mA6r9utfPw8qizSECFFuY6uNsRA5fQ9tFk4bFsyiHDNM6lwZAWfUjPXpcvdcOZAFkbNTXPZAjvkIVZCXzCZC2hBLbL1dcEvHEtQ6D5lQm6CdkuA2k7zNusiVjdo0iDBEb2IoHZAwbs8pyh3eQZDZD",
+    "validationToken": "verify_token_iart",
+    "serverURL": "iart.webhop.me"
 }
