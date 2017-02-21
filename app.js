@@ -313,7 +313,7 @@ function receivedMessage(event) {
         sendTextMessage(senderID, messageText);
     }*/
 
-
+    console.log("here");
     request.post(
         PROLOG_URL + '/api',
         { json: { key: messageText } },
