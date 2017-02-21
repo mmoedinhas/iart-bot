@@ -318,6 +318,9 @@ function receivedMessage(event) {
         PROLOG_URL + '/api',
         { json: { key: messageText } },
         function (error, response, body) {
+            console.log(error);
+            console.log(response);
+            console.log(body);
             if (!error && response.statusCode == 200) {
                 console.log(body)
                 endTextMessage(senderID, body);
