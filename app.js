@@ -315,7 +315,7 @@ function receivedMessage(event) {
 
 
     request.post(
-        PROLOG_URL + '/formpage',
+        PROLOG_URL + '/api',
         { json: { key: messageText } },
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
