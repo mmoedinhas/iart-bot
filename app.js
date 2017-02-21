@@ -51,6 +51,10 @@ const SERVER_URL = (process.env.SERVER_URL) ?
   (process.env.SERVER_URL) :
   config.get('serverURL');
 
+const PROLOG_URL = (process.env.PROLOG_URL) ?
+  (process.env.PROLOG_URL) :
+  config.get('prolog_URL');
+
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
   process.exit(1);
@@ -254,7 +258,7 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches any special
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
-    switch (messageText) {
+    /*switch (messageText) {
       case 'image':
         sendImageMessage(senderID);
         break;
@@ -309,7 +313,19 @@ function receivedMessage(event) {
 
       default:
         sendTextMessage(senderID, messageText);
-    }
+    }*/
+
+
+    request.post(
+        PROLOG_URL + '/formpage',
+        { json: { key: messageText } },
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                console.log(body)
+                endTextMessage(senderID, body);
+            }
+        }
+    );
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
