@@ -51,7 +51,7 @@ const SERVER_URL = (process.env.SERVER_URL) ?
   (process.env.SERVER_URL) :
   config.get('serverURL');
 
-const PROLOG_URL = 'http://193.136.33.109:5001'
+const PROLOG_URL = 'http://rcerqueira.webhop.me:5001'
 
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
