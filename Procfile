@@ -1,2 +1,2 @@
-api: /app/swipl-heroku
+web: /app/swipl-heroku
 web: npm start

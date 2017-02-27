@@ -15,7 +15,8 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package.json /usr/src/app/
 RUN npm install
-RUN npm install -g localtunnel
+RUN npm install node-repl -g
+#RUN npm install -g localtunnel
 
 # Bundle app source
 COPY . /usr/src/app
@@ -23,4 +24,6 @@ COPY . /usr/src/app
 EXPOSE 5000
 
 
-CMD lt -s $subdomain -p 5000 -l $ip & npm start
+#CMD lt -s $subdomain -p 5000 -l $ip & npm start
+
+CMD ["npm", "start"]

@@ -24,6 +24,56 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
 
+/*var spawn = require('child_process').spawn;
+var child = spawn(
+  './prolog/test.pl'
+);
+console.log(child);
+child.stdout.on('data', (data) => {
+  console.log("Hi");
+  console.log('stdout: ${data}');
+});
+
+child.stderr.on('data', (data) => {
+  console.log('stderr: ${data}');
+});
+
+child.on('close', (code) => {
+  console.log('child process exited with code ${code}');
+});
+
+child.stdin.write("Hello World\n");
+
+console.log("Here");
+*/
+
+const spawn = require('child_process').spawn;
+const pl = spawn('./prolog/bot.pl');
+
+pl.stdout.on('data', (data) => {
+  console.log("stdout: " + data);
+  var ob = JSON.parse(data);
+  console.log("Sending \"" + ob.body + "\" to " + ob.senderID);
+  sendTextMessage(ob.senderID, ob.body);
+});
+
+pl.stderr.on('data', (data) => {
+  console.log(`stderr: ${data}`);
+});
+
+pl.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
+/*
+pl.stdin.write("Hello1.\n");
+pl.stdin.write("Hello2.\n");
+pl.stdin.write("Hello3.\n");
+pl.stdin.write("Hello3.\n");
+pl.stdin.write("Hello3.\n");
+pl.stdin.write("Hello3.\n");
+pl.stdin.write("Hello3.\n");
+*/
+
 /*
  * Be sure to setup your config values before running this code. You can 
  * set them using environment variables or modifying the config file in /config.
@@ -51,7 +101,7 @@ const SERVER_URL = (process.env.SERVER_URL) ?
   (process.env.SERVER_URL) :
   config.get('serverURL');
 
-const PROLOG_URL = 'http://rcerqueira.webhop.me:5001'
+const PROLOG_URL = 'http://localhost'
 
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
@@ -312,21 +362,8 @@ function receivedMessage(event) {
       default:
         sendTextMessage(senderID, messageText);
     }*/
+    pl.stdin.write(`{"senderID":"${senderID}","body":"${messageText}"}\n`);
 
-    console.log("here");
-    request.post(
-        PROLOG_URL + '/api',
-        { json: { key: messageText } },
-        function (error, response, body) {
-            console.log(error);
-            console.log(response);
-            console.log(body);
-            if (!error && response.statusCode == 200) {
-                console.log(body)
-                endTextMessage(senderID, body);
-            }
-        }
-    );
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
