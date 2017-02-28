@@ -17,16 +17,14 @@ const
   express = require('express'),
   https = require('https'),  
   request = require('request');
-
+  spawn = require('child_process').spawn;
+  pl = spawn('./prolog/bot.pl');
+  
 var app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
-
-
-const spawn = require('child_process').spawn;
-const pl = spawn('./prolog/bot.pl');
 
 pl.stdout.on('data', (data) => {
   console.log("stdout: " + data);
