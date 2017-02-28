@@ -16,8 +16,8 @@ const
   crypto = require('crypto'),
   express = require('express'),
   https = require('https'),  
-  request = require('request');
-  spawn = require('child_process').spawn;
+  request = require('request'),
+  spawn = require('child_process').spawn,
   pl = spawn('./prolog/bot.pl');
 
 var app = express();
