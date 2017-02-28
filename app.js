@@ -24,28 +24,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
 
-/*var spawn = require('child_process').spawn;
-var child = spawn(
-  './prolog/test.pl'
-);
-console.log(child);
-child.stdout.on('data', (data) => {
-  console.log("Hi");
-  console.log('stdout: ${data}');
-});
-
-child.stderr.on('data', (data) => {
-  console.log('stderr: ${data}');
-});
-
-child.on('close', (code) => {
-  console.log('child process exited with code ${code}');
-});
-
-child.stdin.write("Hello World\n");
-
-console.log("Here");
-*/
 
 const spawn = require('child_process').spawn;
 const pl = spawn('./prolog/bot.pl');
@@ -64,15 +42,7 @@ pl.stderr.on('data', (data) => {
 pl.on('close', (code) => {
   console.log(`child process exited with code ${code}`);
 });
-/*
-pl.stdin.write("Hello1.\n");
-pl.stdin.write("Hello2.\n");
-pl.stdin.write("Hello3.\n");
-pl.stdin.write("Hello3.\n");
-pl.stdin.write("Hello3.\n");
-pl.stdin.write("Hello3.\n");
-pl.stdin.write("Hello3.\n");
-*/
+
 
 /*
  * Be sure to setup your config values before running this code. You can 
