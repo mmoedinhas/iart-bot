@@ -17,7 +17,7 @@ const
   express = require('express'),
   https = require('https'),  
   request = require('request'),
-  spawn = require('child_process').spawn;
+  spawn = require('child_process').spawn,
   pl = spawn('/app/swipl-heroku', ["-q", "-s", "./prolog/bot.pl"]);
 
 var app = express();
