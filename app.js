@@ -17,15 +17,16 @@ const
   express = require('express'),
   https = require('https'),  
   request = require('request');
-  spawn = require('child_process').spawn;
+/*  spawn = require('child_process').spawn;
   pl = spawn('./prolog/bot.pl');
-  
+*/
 var app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
 
+/*
 pl.stdout.on('data', (data) => {
   console.log("stdout: " + data);
   var ob = JSON.parse(data);
@@ -40,7 +41,7 @@ pl.stderr.on('data', (data) => {
 pl.on('close', (code) => {
   console.log(`child process exited with code ${code}`);
 });
-
+*/
 
 /*
  * Be sure to setup your config values before running this code. You can 
@@ -330,7 +331,7 @@ function receivedMessage(event) {
       default:
         sendTextMessage(senderID, messageText);
     }*/
-    pl.stdin.write(`{"senderID":"${senderID}","body":"${messageText}"}\n`);
+    //pl.stdin.write(`{"senderID":"${senderID}","body":"${messageText}"}\n`);
 
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
