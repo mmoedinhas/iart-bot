@@ -17,8 +17,8 @@ const
   express = require('express'),
   https = require('https'),  
   request = require('request'),
-  spawn = require('child_process').spawn,
-  pl = spawn('./prolog/bot.pl');
+  spawn = require('child_process').spawn;
+  //pl = spawn('./prolog/bot.pl');
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
