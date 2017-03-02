@@ -18,7 +18,7 @@ const
   https = require('https'),  
   request = require('request'),
   spawn = require('child_process').spawn,
-  pl = spawn('/app/swipl-heroku', ["-q", "-s", "./prolog/bot.pl"]);
+  pl = spawn('/app/.local/bin/swipl', ["-q", "-s", "./prolog/bot.pl"]);
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
