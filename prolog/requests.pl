@@ -17,7 +17,7 @@
                      spacing(next_argument)
                    ]).
 
-%:- initialization main.
+:- initialization main.
 
 main :-
   repeat,
