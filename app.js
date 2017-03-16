@@ -10,6 +10,11 @@
 /* jshint node: true, devel: true */
 'use strict';
 
+var prologPath = '/usr/bin/swipl';
+var path = '/usr/src/app'
+if (process.env.NODE && ~process.env.NODE.indexOf("heroku"))
+  prologPath = '/app/.local/bin/swipl';
+
 const 
   bodyParser = require('body-parser'),
   config = require('config'),
@@ -17,8 +22,9 @@ const
   express = require('express'),
   https = require('https'),  
   request = require('request'),
+  multer = require('multer'),
   spawn = require('child_process').spawn,
-  pl = spawn('/app/.local/bin/swipl', ["-q", "-s", "./prolog/bot.pl"]);
+  pl = spawn(prologPath, ["-q", "-s", "./prolog/bot.pl"]);
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
@@ -70,7 +76,6 @@ const SERVER_URL = (process.env.SERVER_URL) ?
   (process.env.SERVER_URL) :
   config.get('serverURL');
 
-const PROLOG_URL = 'http://localhost'
 
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
@@ -849,6 +854,36 @@ function callSendAPI(messageData) {
     }
   });  
 }
+
+var storage = multer.diskStorage({
+  destination: function (request, file, callback) {
+    callback(null, path + '/prolog/');
+  },
+  filename: function (request, file, callback) {
+    console.log(file);
+    callback(null, file.originalname);
+  }
+});
+
+var upload = multer({storage: storage}).single('file');
+
+//Showing index.html file on our homepage
+app.get('/files', function(resuest, response) {
+  response.sendFile(path + '/index.html');
+});
+
+//Posting the file upload
+app.post('/upload', function(request, response) {
+  upload(request, response, function(err) {
+  if(err) {
+    console.log('Error Occured ' + err);
+    return;
+  }
+  console.log(request.file);
+  response.end('Your File Uploaded');
+  console.log('Photo Uploaded');
+  })
+});
 
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid 
