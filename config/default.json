@@ -1,6 +1,6 @@
 {
-    "appSecret": "",
-    "pageAccessToken": "",
-    "validationToken": "",
+    "appSecret": "0fe8f84f63b0ee34a7698e0efcebbfa4",
+    "pageAccessToken": "EAAaXfeEsCmkBAIEzpglbrSe1CcbwWMOjXEJxLYEN1w0Kavo0xQdxMHlDe4aRSie8bGhxhwU6w9Ebo4PcR0cDoZCkN9npl855955SOUu6I7p5gZAK9zWxNsZCc7J8FmqPVJaOyxwzNXoKziZCcZAvCbHQ5Npzu4ux8Wt9uiZBdFugZDZD",
+    "validationToken": "verify_token_iart",
     "serverURL": ""
 }
