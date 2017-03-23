@@ -19,6 +19,8 @@
 
 :- initialization main.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    Server    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 main :-
   repeat,
   json_read(user_input, JSONIn),
@@ -34,14 +36,20 @@ process_request(JSONIn, JSONOut):-
   answer(Sender, Message, Answer),
   JSONOut = json([senderID=Sender,body=Answer]).
 
+% TODO: change the implementation of the answer predicate to 
+
 answer(_Sender, Text, Answer):-
   Answer = Text.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%    Web Services Definition    %%%%%%%%%%%%%%%%%%%%%%%%%
 
 ws(gkg).
 
 ws(ox).
 
 ws(bht).
+
+% TODO: Add more web services here
 
 ws_info(gkg, [
   key="<Key>",
@@ -64,6 +72,10 @@ ws_info(bht, [
   path="/api/2/",
   docUrl="https://words.bighugelabs.com/api.php"
 ]).  
+
+% TODO: Add information about the webservices here (API keys, host and path)
+
+%%%%%%%%%%%%%%%%%%%%%%%% Web Services Helper Predicates %%%%%%%%%%%%%%%%%%%%%%%%
 
 get_ws_info(WS, Attributes):-
   nonvar(Attributes), !,
@@ -96,21 +108,17 @@ get_json(Url, Headers, Result):-
     json_read(In, Result),
     %write(Result),
     close(In)
-  )
-  .
+  ).
 
 default(DefaultVal, Val, X, Y):-
-  var(X) -> Y = DefaultVal ; Y = Val
-  .
+  var(X) -> Y = DefaultVal ; Y = Val.
 
 default(DefaultVal, X, Y):-
-  default(DefaultVal, X, X, Y)
-  .
+  default(DefaultVal, X, X, Y).
 
 join(Delim, List, Result):-
     is_list(List), !,
-    concat_delim(Delim, List, Result)
-    .
+    concat_delim(Delim, List, Result).
     
 join(_, String, String):-
     string(String).
@@ -125,8 +133,9 @@ request(Host, BasePath, PathParams, Search, Headers, Result):-
     string_concat(BasePathStr, PathParamsStr, Path),
     append([protocol(https), host(Host), path(Path)], SearchVal, List),
     parse_url(Url, List),
-    get_json(Url, HeadersVal, Result)
-    .
+    get_json(Url, HeadersVal, Result).
+
+%%%%%%%%%%%%%%%%%%%%%%%% Web Services Call Implementation %%%%%%%%%%%%%%%%%%%%%%%%
 
 gkg(Query, Result):-
   gkg(Query, 1, Result).
@@ -143,5 +152,13 @@ bht(Word, Result):-
   get_ws_info(bht, [key=Key, host=Host, path=Path]),
   request(Host, Path, [Key, Word, json], _, _, Result).
 
-
+% TODO: To add support for more webservices, use get_ws_info to get the data   
+% necessary to make API calls such as keys, ids, host name and path by passing 
+% an association list Key=Value where Key is the parameter to extract and 
+% Value is a variable that will contain the value associated with the atom in 
+% the ws_info predicate. Then call request with the hostname, the base path to 
+% the API, the path parameters to the API (will be separated by "/" in the URL), 
+% then the search parameters and finally the headers to add to the request  
+% specific to that web service. The result will be a Prolog term representing 
+% the JSON object returned by the API.
 
