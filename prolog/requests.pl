@@ -39,7 +39,9 @@ answer(_Sender, Text, Answer):-
   Answer = Text.
 
 ws(gkg).
+
 ws(ox).
+
 ws(bht).
 
 ws_info(gkg, [
@@ -101,6 +103,7 @@ get_json(Url, Headers, Result):-
 default(DefaultVal, Val, X, Y):-
   var(X) -> Y = DefaultVal ; Y = Val
   .
+
 default(DefaultVal, X, Y):-
   default(DefaultVal, X, X, Y)
   .
@@ -109,6 +112,7 @@ join(Delim, List, Result):-
     is_list(List), !,
     concat_delim(Delim, List, Result)
     .
+    
 join(_, String, String):-
     string(String).
 

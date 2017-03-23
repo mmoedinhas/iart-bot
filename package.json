@@ -1,7 +1,7 @@
 {
-  "name": "messenger-get-started",
+  "name": "iart-bot",
   "version": "1.0.0",
-  "description": "Get started example for Messenger Platform",
+  "description": "Messenger Bots in Prolog",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -10,10 +10,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fbsamples/messenger-platform-samples.git"
+    "url": "https://github.com/ricardocerq/Iart-Bot.git"
   },
-  "author": "Facebook",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.16.1",
     "config": "^1.25.1",
