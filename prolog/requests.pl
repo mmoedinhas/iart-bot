@@ -50,6 +50,7 @@ ws(ox).
 ws(bht).
 
 % TODO: Add more web services here
+% TODO: Replace <Key> with API keys and <ID> with app IDs
 
 ws_info(gkg, [
   key="<Key>",
