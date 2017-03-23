@@ -24,7 +24,7 @@ const
   request = require('request'),
   multer = require('multer'),
   spawn = require('child_process').spawn,
-  pl = spawn(prologPath, ["-q", "-s", "./prolog/bot.pl"]);
+  pl = spawn(prologPath, ["-q", "-s", "./prolog/requests.pl"]);
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
