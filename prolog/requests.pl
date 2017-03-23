@@ -22,7 +22,6 @@
 main :-
   repeat,
   json_read(user_input, JSONIn),
-  write(JSONIn),
   process_request(JSONIn, JSONOut),
   json_write(user_output, JSONOut),
   flush_output(user_output),
