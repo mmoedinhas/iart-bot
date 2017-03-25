@@ -3,7 +3,7 @@
 Follow the [walk-through](https://developers.facebook.com/docs/messenger-platform/quickstart) to set up a Facebook app.
 
 ## Setup
-sdsassdadsasadsdasdasdaas
+
 Create a [Messenger app](https://developers.facebook.com/) and [page](https://www.facebook.com/pages/create).
 
 Select your page:
