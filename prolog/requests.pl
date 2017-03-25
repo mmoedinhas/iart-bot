@@ -74,7 +74,8 @@ ws_info(bht, [
   docUrl="https://words.bighugelabs.com/api.php"
 ]).  
 
-% TODO: Add information about the webservices here (API keys, host and path)
+% TODO: Add information about the webservices here (API keys, host and path), 
+% docURL will allow to open the documentation from the CLI.
 
 %%%%%%%%%%%%%%%%%%%%%%%% Web Services Helper Predicates %%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -86,6 +87,7 @@ get_ws_info(WS, Attributes):-
 get_ws_info(WS, Attributes):-
     ws_info(WS, Attributes).
 
+% Open browser to see documentation
 check_docs(WS):-
   get_ws_info(WS, [docUrl=Url]),
   www_open_url(Url).
