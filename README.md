@@ -14,6 +14,7 @@ git clone https://github.com/ricardocerq/iart-bot.git
 cd iart-bot
 ```
 Get the App ID:
+
 ![id](https://cloud.githubusercontent.com/assets/9307236/24323771/c23c7254-1172-11e7-9d1b-1cb7114ff092.JPG)
 
 Paste it in `public/index.html`, in addition to the ID of your page.
@@ -21,9 +22,11 @@ Paste it in `public/index.html`, in addition to the ID of your page.
 Set the values in `config/default.json`:
 
 Get the App Secret from the App Dashboard:
+
 ![dash](https://cloud.githubusercontent.com/assets/9307236/24323807/62bc2b98-1173-11e7-9a64-ded167716bd7.JPG)
 
 Select your page and get the Page Access Token:
+
 ![pageselect](https://cloud.githubusercontent.com/assets/9307236/24323666/0ab5c9e2-1171-11e7-9385-55263793b134.JPG)
 
 Finally choose any string for the `validationToken`.
@@ -44,8 +47,10 @@ In the Webhooks section, click "Setup Webhooks".
 In the "Callback URL" paste the URL and add `/webhook` at the end. Under "Verify Token" set the string you choose for the `validationToken`. Under "Subscription Fields", select `messages` and `messaging_postbacks`.
 
 Then select your page.
+
 ![page](https://cloud.githubusercontent.com/assets/9307236/24324028/b2386aa8-1176-11e7-9fef-b437b60c661e.JPG)
- And click Subscribe.
+
+And click Subscribe.
  
 Go back to your Heroku app and click the "Message us" button and chat away.
 
