@@ -6,10 +6,10 @@ Create a [Messenger app](https://developers.facebook.com/) and [page](https://ww
 
 If you don't have a Heroku account, [create one](https://signup.heroku.com/signup/dc). Ensure you have the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed.
 
-Clone this repository:
+Fork this repository, then clone it:
 
 ```
-git clone https://github.com/ricardocerq/iart-bot.git
+git clone https://github.com/.../iart-bot.git
 
 cd iart-bot
 ```
@@ -36,7 +36,7 @@ Run the following commands to create a Heroku app and deploy the code.
 ```
 heroku create
 
-heroku buildpacks:add nodejs
+heroku buildpacks:add heroku/nodejs
 
 heroku buildpacks:add https://github.com/ricardocerq/heroku-prolog-buildpack.git
 
