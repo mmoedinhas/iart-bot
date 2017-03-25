@@ -31,14 +31,23 @@ Select your page and get the Page Access Token:
 
 Finally choose any string for the `validationToken`.
 
+Run the following commands to create a Heroku app and deploy the code.
+
 ```
 heroku create
+
 heroku buildpacks:add nodejs
+
 heroku buildpacks:add https://github.com/ricardocerq/heroku-prolog-buildpack.git
+
 git add .
+
 git commit -m "set values"
+
 git push heroku master
+
 heroku open
+
 ```
 Copy the URL.
 
