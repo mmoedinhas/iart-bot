@@ -66,6 +66,6 @@ Refer to the [Messenger bot tutorial](https://developers.facebook.com/docs/messe
 
 ## Changing the bot
 
-Replace the predicate `answer\3` in `prolog/request.pl` to implement the functionality of your bot. To redeploy, push to heroku/master.
+Replace the predicate `answer\3` in `prolog/request.pl` to implement the functionality of your bot. To redeploy, push to `heroku/master`.
 In this file, you find more information on integration with web API's
 
