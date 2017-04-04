@@ -67,5 +67,13 @@ Refer to the [Messenger bot tutorial](https://developers.facebook.com/docs/messe
 ## Changing the bot
 
 Replace the predicate `answer/3` in `prolog/request.pl` to implement the functionality of your bot. To redeploy, push to `heroku/master`.
-In this file, you find more information on integration with web API's
+To add support for more Web API's, add a fact `ws/1` with the atom representing it. Add a fact `ws_info/2` with the information necessary to make an API call (keys, ids, host, path, etc):
+```
+ws_info(atom, [
+  key=<KEY>,
+  host=<HOST>,
+  path=<PATH>,
+]).
+```
+Then use get_ws_info to get the data in ws_info by passing an association list Key=Value where Key is the parameter to extract and Value is a variable that will contain the value associated with the atom in the ws_info predicate. Then call request/6 with the hostname, the base path to the API, the path parameters to the API (will be separated by "/" in the URL), then the search parameters and finally the headers to add to the request specific to that web service. The result will be a Prolog term representing the JSON object returned by the API.
 
