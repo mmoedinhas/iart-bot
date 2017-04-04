@@ -159,7 +159,7 @@ bht(Word, Result):-
 % necessary to make API calls such as keys, ids, host name and path by passing 
 % an association list Key=Value where Key is the parameter to extract and 
 % Value is a variable that will contain the value associated with the atom in 
-% the ws_info predicate. Then call request with the hostname, the base path to 
+% the ws_info predicate. Then call request/6 with the hostname, the base path to 
 % the API, the path parameters to the API (will be separated by "/" in the URL), 
 % then the search parameters and finally the headers to add to the request  
 % specific to that web service. The result will be a Prolog term representing 
