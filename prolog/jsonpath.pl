@@ -2,7 +2,7 @@
 :- use_module(library(http/json_convert)).
 
 %:- open('teste.json', read, Str), json_read(Str, Result), Result = json([Name, Test|_]), Test = (created=json(Test2)), write(Test2).
-get_json(Stream, String) :- open(Stream, read, Str), json_read(Str, String).
+%get_json(Stream, String) :- open(Stream, read, Str), json_read(Str, String).
 
 %teste :- get_json('teste.json', JSON), JSONPath = "$.store.book[1].price", compute_jsonpath(JSON, JSONPath, Out).
 
